@@ -6,6 +6,7 @@ function setup() {
   createCanvas(800, 800);
   iterations = int(prompt("How many frequencies do you want do display? (you are able to display extreme numbers, but the frequency cutoff of most songs appears around 600 iterations, so a number below or at 600 is best for visualization)"));
   song = loadSound("./audio/lotus-flower.mp3");
+  song.loop();
   
   analyzer = new p5.Amplitude();
   fft = new p5.FFT();
@@ -24,7 +25,6 @@ function setup() {
 
 function draw() {
   background(0);
-  song.loop();
   
   let samples = fft.analyze();
   let rms = analyzer.getLevel();
