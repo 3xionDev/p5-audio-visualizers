@@ -19,25 +19,19 @@ function setup() {
   bar1 = createCheckbox("single multicolor bars", true);
   bar2 = createCheckbox("double white bars", false);
   bar3 = createCheckbox("red circle red bars", false);
-  audioenable = createCheckbox("start audio", false);
   
 }
 
 function draw() {
   background(0);
+  song.loop();
   
   let samples = fft.analyze();
   let rms = analyzer.getLevel();
   
   let lineX = 0;
   strokeWeight(2);
-
-  if (audioenable.checked()) {
-    song.play();
-    song.loop();
-  } else {
-    song.pause();
-  };
+  
   //the following lines make me extremely ashamed
   
   if (bar1.checked() ) {
