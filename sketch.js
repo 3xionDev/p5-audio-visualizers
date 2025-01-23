@@ -2,15 +2,10 @@
 
 let song, analyzer, fft;
 
-function preload() {
-  song = loadSound("./audio/lotus-flower.mp3");
-  //change the song by uploading a different one and changing the path
-}
-
 function setup() {
   createCanvas(800, 800);
   iterations = int(prompt("How many frequencies do you want do display? (you are able to display extreme numbers, but the frequency cutoff of most songs appears around 600 iterations, so a number below or at 600 is best for visualization)"));
-  song.loop();
+  song = loadSound("./audio/lotus-flower.mp3");
   
   analyzer = new p5.Amplitude();
   fft = new p5.FFT();
@@ -24,6 +19,7 @@ function setup() {
   bar1 = createCheckbox("single multicolor bars", true);
   bar2 = createCheckbox("double white bars", false);
   bar3 = createCheckbox("red circle red bars", false);
+  audioenable = createCheckbox("start audio", false);
   
 }
 
@@ -35,7 +31,13 @@ function draw() {
   
   let lineX = 0;
   strokeWeight(2);
-  
+
+  if (audioenable.checked()) {
+    song.play();
+    song.loop();
+  } else {
+    song.pause();
+  };
   //the following lines make me extremely ashamed
   
   if (bar1.checked() ) {
