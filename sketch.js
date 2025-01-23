@@ -3,7 +3,7 @@
 let song, analyzer, fft;
 
 function preload() {
-  song = loadSound("audio/lotus-flower.mp3");
+  song = loadSound("./audio/lotus-flower.mp3");
   //change the song by uploading a different one and changing the path
 }
 
